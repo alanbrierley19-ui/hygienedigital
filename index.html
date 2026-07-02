@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hygiene Digital | Enterprise Mobility & BYOD Security</title>
+    <style>
+        /* --- DESIGN SYSTEM & PALETTE --- */
+        :root {
+            --bg-dark: #1A1C1A;       /* Deep charcoal-green */
+            --card-dark: #242924;     /* Dark sage cards */
+            --sage-primary: #87A987;  /* Primary Sage Accent */
+            --sage-hover: #6E8F6E;    /* Darker sage for buttons */
+            --text-light: #FFFFFF;    /* Pure white */
+            --text-muted: #BDC3C7;    /* Light gray text */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(26, 28, 26, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(135, 169, 135, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--sage-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage-primary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 160px 8% 80px 8%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .badge {
+            background-color: rgba(135, 169, 135, 0.1);
+            color: var(--sage-primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(135, 169, 135, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            max-width: 800px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--sage-primary);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            background-color: var(--sage-primary);
+            color: var(--bg-dark);
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--sage-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            padding: 80px 8%;
+            background-color: rgba(36, 41, 36, 0.3);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-dark);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(135, 169, 135, 0.2);
+        }
+
+        .icon {
+            font-size: 2rem;
+            color: var(--sage-primary);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- B2B BYOD VALUE PROPOSITION --- */
+        .cta-banner {
+            margin: 80px 8%;
+            padding: 60px;
+            background-color: var(--card-dark);
+            border-radius: 12px;
+            border: 1px solid rgba(135, 169, 135, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .cta-text h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-text p {
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .cta-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">🛡️ Hygiene<span>Digital</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#byod">BYOD Model</a></li>
+            <li><a href="#enterprise">Enterprise</a></li>
+        </ul>
+        <a href="#download" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Deploy App</a>
+    </nav>
+
+    <section class="hero">
+        <div class="badge">Phase 2: Enterprise Mobile Management Client</div>
+        <h1>Securing Device Autonomy with <span>Hygiene Digital</span></h1>
+        <p>A corporate-grade, low-footprint application security environment built for splitting personal privacy and business intelligence assets.</p>
+        <a href="#download" class="btn">Request Corporate Evaluation</a>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Architected for Mobile Hygiene</h2>
+            <p>Advanced diagnostic layers running under unified device structures.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🔒</div>
+                <h3>Biometric App Locker</h3>
+                <p>Isolate business application bundles behind a hardware authentication layer. Safeguards corporate email and Slack records within unmanaged devices.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🕵️‍♂️</div>
+                <h3>Behavioral Auditor</h3>
+                <p>Live process monitoring maps execution signatures against known telemetry risks, system alert overlay hooks, and illegal background network activity.</p>
+            </div>
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>Performance Optimization</h3>
+                <p>Audits resource drainage leaks and cleans background cache files cleanly without impacting baseline operating system permissions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner" id="byod">
+        <div class="cta-text">
+            <h3>The Corporate BYOD Advantage</h3>
+            <p>Empower your workforce to use personal assets without exposing enterprise networks. Our sandbox tracking protocols separate active business data from day-to-day operations seamlessly.</p>
+        </div>
+        <a href="#contact" class="btn">Get Licensing Spec Sheet</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Hygiene Digital Security Suite. All rights reserved. Registered Endpoint protection.</p>
+    </footer>
+
+</body>
+</html>
